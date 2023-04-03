@@ -1,0 +1,56 @@
+import request from '@/utils/request';
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+export function use${ModuleName}Api() {
+	return {
+		list: (params) => {
+		return request({
+			url: '/${moduleName}/${requestMapping}/list',
+			method: 'get',
+			params
+		});
+},
+	add: (params) => {
+		return request({
+			#if($useRestful)
+				url: '/${moduleName}/${moduleName}/${requestMapping}',
+				method: 'put',
+			#else
+				url: '/${moduleName}/${requestMapping}/save',
+				method: 'post',
+			#end
+			data: params
+		});
+	},
+	update: (params) => {
+		return request({
+			#if($useRestful)
+				url: '/${moduleName}/${moduleName}/${requestMapping}',
+				method: 'put',
+			#else
+				url: '/${moduleName}/${requestMapping}/update',
+				method: 'post',
+			#end
+			data: params
+		});
+	},
+	delete: (params) => {
+		return request({
+			#if($useRestful)
+				url: '/${moduleName}/${moduleName}/${requestMapping}',
+				method: 'delete',
+			#else
+				url: '/${moduleName}/${requestMapping}/delete',
+				method: 'post',
+			#end
+			data: params
+		});
+	}
+};
+}
